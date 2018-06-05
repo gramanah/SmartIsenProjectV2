@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "building",
+            "otherEntityName": "building",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "name"
+        },
+        {
+            "relationshipName": "floors",
+            "otherEntityName": "floor",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180604140648",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "school",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

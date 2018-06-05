@@ -1,0 +1,86 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myRoomLabel">Create or edit a Room</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!room.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="room.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="room.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_active">Active</label>
+            <input type="checkbox" class="form-control" name="active" id="field_active"
+                [(ngModel)]="room.active" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_windows">Windows</label>
+            <input type="checkbox" class="form-control" name="windows" id="field_windows"
+                [(ngModel)]="room.windows" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_door">Door</label>
+            <input type="checkbox" class="form-control" name="door" id="field_door"
+                [(ngModel)]="room.door" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_heater">Heater</label>
+            <input type="checkbox" class="form-control" name="heater" id="field_heater"
+                [(ngModel)]="room.heater" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_light">Light</label>
+            <input type="checkbox" class="form-control" name="light" id="field_light"
+                [(ngModel)]="room.light" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_presence">Presence</label>
+            <input type="checkbox" class="form-control" name="presence" id="field_presence"
+                [(ngModel)]="room.presence" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_globalTemperature">Global Temperature</label>
+            <input type="number" class="form-control" name="globalTemperature" id="field_globalTemperature"
+                [(ngModel)]="room.globalTemperature" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="room.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === room.user?.id ? room.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_floor">Floor</label>
+            <select class="form-control" id="field_floor" name="floor" [(ngModel)]="room.floor" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="floorOption.id === room.floor?.id ? room.floor : floorOption" *ngFor="let floorOption of floors; trackBy: trackFloorById">{{floorOption.lastName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_building">Building</label>
+            <select class="form-control" id="field_building" name="building" [(ngModel)]="room.building" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="buildingOption.id === room.building?.id ? room.building : buildingOption" *ngFor="let buildingOption of buildings; trackBy: trackBuildingById">{{buildingOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

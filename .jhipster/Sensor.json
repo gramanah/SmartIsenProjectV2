@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "room",
+            "otherEntityName": "room",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "macAdress",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180604141321",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "sensor",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

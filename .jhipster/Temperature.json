@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "sensor",
+            "otherEntityName": "sensor",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "temperature"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "time",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180604142754",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "temperature",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

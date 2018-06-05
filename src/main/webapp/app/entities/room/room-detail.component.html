@@ -1,0 +1,70 @@
+
+<div *ngIf="room">
+    <h2><span>Room</span> {{room.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{room.name}}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+            <span>{{room.active}}</span>
+        </dd>
+        <dt><span>Windows</span></dt>
+        <dd>
+            <span>{{room.windows}}</span>
+        </dd>
+        <dt><span>Door</span></dt>
+        <dd>
+            <span>{{room.door}}</span>
+        </dd>
+        <dt><span>Heater</span></dt>
+        <dd>
+            <span>{{room.heater}}</span>
+        </dd>
+        <dt><span>Light</span></dt>
+        <dd>
+            <span>{{room.light}}</span>
+        </dd>
+        <dt><span>Presence</span></dt>
+        <dd>
+            <span>{{room.presence}}</span>
+        </dd>
+        <dt><span>Global Temperature</span></dt>
+        <dd>
+            <span>{{room.globalTemperature}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{room.user?.login}}
+        </dd>
+        <dt><span>Floor</span></dt>
+        <dd>
+            <div *ngIf="room.floor">
+                <a [routerLink]="['/floor', room.floor?.id]">{{room.floor?.lastName}}</a>
+            </div>
+        </dd>
+        <dt><span>Building</span></dt>
+        <dd>
+            <div *ngIf="room.building">
+                <a [routerLink]="['/building', room.building?.id]">{{room.building?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'room/'+ room.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

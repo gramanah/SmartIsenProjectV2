@@ -1,0 +1,36 @@
+
+<div *ngIf="temperature">
+    <h2><span>Temperature</span> {{temperature.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Value</span></dt>
+        <dd>
+            <span>{{temperature.value}}</span>
+        </dd>
+        <dt><span>Time</span></dt>
+        <dd>
+            <span>{{temperature.time | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Sensor</span></dt>
+        <dd>
+            <div *ngIf="temperature.sensor">
+                <a [routerLink]="['/sensor', temperature.sensor?.id]">{{temperature.sensor?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'temperature/'+ temperature.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "school",
+            "otherEntityName": "school",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "rooms",
+            "otherEntityName": "room",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "floors"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20180604134814",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "floor",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,71 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "room"
+        },
+        {
+            "relationshipName": "floor",
+            "otherEntityName": "floor",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "lastName"
+        },
+        {
+            "relationshipName": "building",
+            "otherEntityName": "building",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "sensors",
+            "otherEntityName": "sensor",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "rooms"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "windows",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "door",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "heater",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "light",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "presence",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "globalTemperature",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20180604140329",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "room",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

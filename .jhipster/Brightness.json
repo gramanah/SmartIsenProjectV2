@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "time",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180604133843",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "brightness",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

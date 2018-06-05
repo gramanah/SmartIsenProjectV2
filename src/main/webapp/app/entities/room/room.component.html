@@ -1,0 +1,96 @@
+<div>
+    <h2>
+        <span>Rooms</span>
+        <button class="btn btn-primary float-right jh-create-entity create-room" [routerLink]="['/', { outlets: { popup: ['room-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Room
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rooms">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span>Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="active"><span>Active</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="windows"><span>Windows</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="door"><span>Door</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="heater"><span>Heater</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="light"><span>Light</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="presence"><span>Presence</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="globalTemperature"><span>Global Temperature</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.login"><span>User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="floor.lastName"><span>Floor</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="building.name"><span>Building</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let room of rooms ;trackBy: trackId">
+                <td><a [routerLink]="['../room', room.id ]">{{room.id}}</a></td>
+                <td>{{room.name}}</td>
+                <td>{{room.active}}</td>
+                <td>{{room.windows}}</td>
+                <td>{{room.door}}</td>
+                <td>{{room.heater}}</td>
+                <td>{{room.light}}</td>
+                <td>{{room.presence}}</td>
+                <td>{{room.globalTemperature}}</td>
+                <td>
+                    {{room.user?.login}}
+                </td>
+                <td>
+                    <div *ngIf="room.floor">
+                        <a [routerLink]="['../floor', room.floor?.id ]" >{{room.floor?.lastName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="room.building">
+                        <a [routerLink]="['../building', room.building?.id ]" >{{room.building?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../room', room.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'room/'+ room.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'room/'+ room.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="rooms && rooms.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
